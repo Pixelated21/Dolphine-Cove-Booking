@@ -17,6 +17,7 @@ class CreateProgramsTable extends Migration
             $table->id("programme_id");
             $table->string("programme_name");
             $table->string("programme_cost");
+            $table->string("capacity");
             $table->date("excursion_date");
             $table->timestamps();
         });

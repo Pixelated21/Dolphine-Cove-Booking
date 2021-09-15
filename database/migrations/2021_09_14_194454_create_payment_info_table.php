@@ -15,7 +15,7 @@ class CreatePaymentInfoTable extends Migration
     {
         Schema::create('payment_info', function (Blueprint $table) {
             $table->id("payment_info_id");
-            $table->foreignId("tour_company_id")->constrained("tour_companies","tour_company_id");
+            $table->foreignId("tour_company_id")->constrained("tour_companies","tour_company_id")->cascadeOnDelete()->cascadeOnUpdate();
             $table->string("card_holder_nm");
             $table->string("card_nbr");
             $table->longText("billing_address");

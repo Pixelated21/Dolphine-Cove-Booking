@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePaymentActivityTable extends Migration
+class CreateHotelsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreatePaymentActivityTable extends Migration
      */
     public function up()
     {
-        Schema::create('payment_activity', function (Blueprint $table) {
-            $table->id("payment_activity_id");
-            $table->foreignId("payment_info_id")->constrained("payment_info","payment_info_id")->cascadeOnDelete()->cascadeOnUpdate();
+        Schema::create('hotels', function (Blueprint $table) {
+            $table->id("hotel_id");
+            $table->string("hotel_name");
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ class CreatePaymentActivityTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('payment_activity');
+        Schema::dropIfExists('hotels');
     }
 }
