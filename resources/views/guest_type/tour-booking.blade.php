@@ -13,7 +13,7 @@
 <body>
 
 <!-- component -->
-<form action="{{url('/tour-booking-book')}}" method="post" class="mx-auto relative max-w-6xl p-5">
+<form action="{{url('/tour-booking-book')}}" method="post" class="mx-auto relative max-w-6xl p-3">
     @csrf
     <div class="flex flex-col md:flex-row justify-center">
         <div class="md:w-1/2 max-w-md flex flex-col justify-center">
@@ -107,7 +107,7 @@
                                 disabled
                                 class="w-full p-1 active:outline-none focus:outline-none rounded p-2.5 border border-gray-200 ">
                             @foreach($programs as $program)
-                                <option value="{{$program->programme_id}}">{{$program->programme_cost}}</option>
+                                <option value="{{$program->programme_cost}}">{{$program->programme_cost}}</option>
                             @endforeach
                         </select>
                     </div>

@@ -28,14 +28,11 @@ class Tour_Company_Booking extends Controller
 
     public function bookGuest(Request $request) {
 
-//        dd($request->all());
         $booking = new Booking();
         $booking->programme_id = $request->get('prog_nm');
         $booking->booking_type = "Tour";
         $booking->tour_company_id = $request->get("tour_comp");
         $booking->payment_type = $request->get("payment_type");
-
-
         $booking->date_booked = now("Jamaica");
         $guest = new Guest();
         $guest->first_nm = $request->get('first_nm');
@@ -46,7 +43,6 @@ class Tour_Company_Booking extends Controller
         $guest->booking()->save($booking);
 
 
-        $price = 5000;
 
         if ($request->get("payment_type") === "Credit") {
 
@@ -54,8 +50,14 @@ class Tour_Company_Booking extends Controller
                 ->where("tour_company_id","=",$request->get("tour_comp"))
                 ->get("credit_amt");
 
+            $progCost = Program::find($request->get("prog_nm"))
+                ->where("programme_id","=",$request->get("prog_nm"))
+                ->get("programme_cost");
+
+
             $addCredit = Tour_Company::find($request->get("tour_comp"))
-                ->update(["credit_amt" => $findCredit[0]->credit_amt += $price]);
+                ->update(["credit_amt" => $findCredit[0]->credit_amt += ((int)$progCost[0]->programme_cost)]);
+
         }
 
 
