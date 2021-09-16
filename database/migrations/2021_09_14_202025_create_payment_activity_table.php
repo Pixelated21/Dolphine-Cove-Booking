@@ -15,7 +15,8 @@ class CreatePaymentActivityTable extends Migration
     {
         Schema::create('payment_activity', function (Blueprint $table) {
             $table->id("payment_activity_id");
-            $table->foreignId("payment_info_id")->constrained("payment_info","payment_info_id");
+            $table->foreignId("payment_info_id")->constrained("payment_info","payment_info_id")->cascadeOnUpdate()->cascadeOnDelete();
+            $table->string("amount_paid");
             $table->timestamps();
         });
     }

@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Homepage;
+use App\Http\Controllers\Tour_Company_Booking;
+use App\Http\Controllers\Walk_In_Booking;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +16,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/',[Homepage::class,'index']);
+
+Route::get('/booking', [Homepage::class, 'booking']);
+Route::get('/view-booking', [Homepage::class, 'viewBooking']);
+
+
+Route::get('/booking/tour-company-booking', [Tour_Company_Booking::class, 'index']);
+Route::get('/booking/walk-in-booking', [Walk_In_Booking::class, 'index']);
+
+
+Route::post('/walk-in-booking-book', [Walk_In_Booking::class, 'bookGuest']);
+Route::post('/tour-booking-book', [Tour_Company_Booking::class, 'bookGuest']);
+
