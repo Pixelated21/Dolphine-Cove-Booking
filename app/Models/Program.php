@@ -13,6 +13,6 @@ class Program extends Model
     protected $table = "programs";
 
     public function bookings(){
-        $this->hasMany(Booking::class);
+        return $this->hasMany(Booking::class);
     }
 }

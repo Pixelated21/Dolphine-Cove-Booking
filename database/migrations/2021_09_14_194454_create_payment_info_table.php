@@ -15,13 +15,14 @@ class CreatePaymentInfoTable extends Migration
     {
         Schema::create('payment_info', function (Blueprint $table) {
             $table->id("payment_info_id");
-            $table->foreignId("tour_company_id")->constrained("tour_companies","tour_company_id")->cascadeOnDelete()->cascadeOnUpdate();
-            $table->string("card_holder_nm");
-            $table->string("card_nbr");
-            $table->longText("billing_address");
-            $table->date("exp_mnt");
-            $table->date("exp_yr");
-            $table->integer("cvv");
+            $table->foreignId("entity_type_id")->constrained("entity_types","entity_type_id")->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId("entity_id")->constrained("guests","guest_id")->cascadeOnDelete()->cascadeOnUpdate();
+//            $table->string("card_holder_nm");
+//            $table->string("card_nbr");
+//            $table->longText("billing_address");
+//            $table->date("exp_mnt");
+//            $table->date("exp_yr");
+//            $table->integer("cvv");
             $table->timestamps();
         });
     }

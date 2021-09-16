@@ -5,19 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Booking extends Model
+class Guest_Type extends Model
 {
     use HasFactory;
 
+    protected $primaryKey = "guest_type_id";
+    protected $table = "guest_types";
+
     public function guest(){
         return $this->belongsTo(Guest::class);
-    }
-
-    public function tour_company() {
-        return $this->belongsTo(Tour_Company::class);
-    }
-
-    public function program() {
-        return $this->belongsTo(Program::class);
     }
 }
