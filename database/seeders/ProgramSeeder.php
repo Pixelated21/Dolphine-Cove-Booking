@@ -14,10 +14,11 @@ class ProgramSeeder extends Seeder
      */
     protected $program = [
         [
-            'program_name' => "Swim With Dolphins",
-            'program_cost' => 10000,
+            'programme_name' => "Swim With Dolphins",
+            'programme_cost' => 10000,
             'capacity' => 30,
             'excursion_date' => "2021-09-16 08:18:13",
+            'created_at' => "2021-09-16 08:18:13",
             'updated_at' => "2021-09-16 08:18:13"
         ],
         [
