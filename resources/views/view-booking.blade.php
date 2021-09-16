@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" href="{{asset("css/app.css")}}">
-
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -10,7 +9,6 @@
     <title>Document</title>
 </head>
 <body>
-
 <!-- component -->
 <div class="overflow-x-auto h-screen w-screen">
     <div class=" bg-gray-100  h-full w-full flex items-center justify-center bg-gray-100 font-sans overflow-hidden">
@@ -32,7 +30,8 @@
                     </thead>
                     <tbody class="text-gray-600 text-sm font-light">
                     @foreach($bookings as $booking)
-                    <tr class="border-b border-gray-200 hover:bg-gray-100">
+
+                        <tr class="border-b border-gray-200 hover:bg-gray-100">
                         <td class="py-3 px-6 text-left whitespace-nowrap">
                             <div class="flex items-center">
                                 <span class="font-medium">{{$booking->booking_id}}</span>
@@ -66,7 +65,8 @@
                         </td>
                         <td class="py-3 px-6 text-left">
                             <div class="flex items-center">
-                                <span>{{\Carbon\Carbon::parse($booking->date_booked)->diffForHumans()}}</span>
+                                <span>{{date("Y-m-d h:m:s")}}</span>
+{{--                                <span>{{(date("Y" ,strtotime($booking->date_booked)))}}</span>--}}
                             </div>
                         </td>
 
