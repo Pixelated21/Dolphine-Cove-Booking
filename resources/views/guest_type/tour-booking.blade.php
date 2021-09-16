@@ -100,7 +100,7 @@
 
                 <div class="w-full">
                     <div class="font-bold h-6 mt-3 text-gray-600 text-xs leading-8 uppercase">Programme Cost</div>
-                    <div class="my-2 bg-white p-1 flex border border-gray-200 rounded">
+                    <div class="my-2 bg-white p-1 flex rounded">
 
                         <select name="prog_cost"
                                 id="prog_cost"
@@ -116,14 +116,14 @@
 
                 <div class="w-full">
                     <div class="font-bold h-6 mt-3 text-gray-600 text-xs leading-8 uppercase">Excursion Date</div>
-                    <div class="my-2 bg-white p-1 flex border border-gray-200 rounded">
+                    <div class="my-2 bg-white p-1 flex  rounded">
 
                         <select name="excur_dt"
                                 id="excur_dt"
                                 disabled
-                                class="w-full p-1 active:outline-none focus:outline-none rounded p-2.5 border border-gray-200 ">
+                                class="w-full p-1 outline-none rounded p-2.5 border border-gray-200 ">
                             @foreach($programs as $program)
-                                <option value="{{$program->programme_id}}">{{$program->excursion_date}}</option>
+                                <option class="outline-none" value="{{$program->programme_id}}">{{$program->excursion_date}}</option>
                             @endforeach
                         </select>
 
@@ -137,8 +137,9 @@
 
                         <select name="payment_type"
                                 class="w-full p-1 active:outline-none focus:outline-none rounded p-2.5 border border-gray-200 ">
-                            <option value="Credit">Credit</option>
-                            <option value="Cash">Cash</option>
+                            @foreach($payment_types as $payment_type)
+                                <option value="{{$payment_type->payment_type_id}}">{{$payment_type->payment_type}}</option>
+                            @endforeach
                         </select>
 
                     </div>

@@ -19,6 +19,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/',[Homepage::class,'index']);
 
 Route::get('/booking', [Homepage::class, 'booking']);
+Route::get('/view-booking', [Homepage::class, 'viewBooking']);
+
+
 Route::get('/booking/tour-company-booking', [Tour_Company_Booking::class, 'index']);
 Route::get('/booking/walk-in-booking', [Walk_In_Booking::class, 'index']);
 

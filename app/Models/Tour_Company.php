@@ -16,6 +16,6 @@ class Tour_Company extends Model
         ['credit_amt'];
 
     public function payment_info(){
-        return $this->hasMany(Payment_info::class);
+        return $this->hasMany(Payment_info::class,"entity_id","tour_company_id");
     }
 }
