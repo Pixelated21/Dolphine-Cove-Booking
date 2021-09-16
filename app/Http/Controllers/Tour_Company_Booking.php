@@ -43,7 +43,7 @@ class Tour_Company_Booking extends Controller
         $booking->programme_id = $request->get('prog_nm');
         $booking->tour_company_id = $request->get("tour_comp");
         $booking->payment_type_id = $request->get("payment_type");
-        $booking->date_booked = strtotime(now("Jamaica"));
+        $booking->date_booked = strtotime(date("Y-m-d"));
         $guest = new Guest();
         $guest->first_nm = $request->get('first_nm');
         $guest->last_nm = $request->get('last_nm');

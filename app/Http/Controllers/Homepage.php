@@ -19,6 +19,7 @@ class Homepage extends Controller
 
         $bookings = Booking::all();
 
+//        dd($bookings);
         return view("view-booking")
             ->with(compact("bookings",$bookings));
 
