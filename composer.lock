@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9356deb32166b3046b7bae8a53bddc52",
+    "content-hash": "31eeb76718f5805423b3a6686198ab11",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -577,6 +577,53 @@
                 }
             ],
             "time": "2021-04-26T11:24:25+00:00"
+        },
+        {
+            "name": "googee/entity",
+            "version": "v2.3.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/GooGee/Entity.git",
+                "reference": "d015bc4d20190174d176ff35c60d02ae8ccbee58"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/GooGee/Entity/zipball/d015bc4d20190174d176ff35c60d02ae8ccbee58",
+                "reference": "d015bc4d20190174d176ff35c60d02ae8ccbee58",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": ">=5.5"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "GooGee\\Entity\\EntityServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "GooGee\\Entity\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "GooGee",
+                    "email": "mou-gj@live.com"
+                }
+            ],
+            "description": "laravel code generator",
+            "support": {
+                "issues": "https://github.com/GooGee/Entity/issues",
+                "source": "https://github.com/GooGee/Entity/tree/v2.3.1"
+            },
+            "time": "2021-02-05T03:01:19+00:00"
         },
         {
             "name": "graham-campbell/result-type",

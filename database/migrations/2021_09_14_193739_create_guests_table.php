@@ -17,8 +17,8 @@ class CreateGuestsTable extends Migration
             $table->id("guest_id");
             $table->string("first_nm");
             $table->string("last_nm");
-            $table->string("guest_type");
-            $table->string("hotel")->nullable();
+            $table->foreignId("guest_type_id")->constrained("guest_types","guest_type_id")->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreignId("hotel_id")->constrained("hotels","hotel_id")->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();
         });
     }
