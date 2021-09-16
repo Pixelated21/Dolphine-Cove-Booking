@@ -9,6 +9,7 @@
     <title>Document</title>
 </head>
 <body>
+<div class="dark"></div>
 <!-- component -->
 <div class="overflow-x-auto h-screen w-screen">
     <div class=" bg-gray-100  h-full w-full flex items-center justify-center bg-gray-100 font-sans overflow-hidden">
