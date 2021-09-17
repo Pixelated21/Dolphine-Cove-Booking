@@ -16,7 +16,6 @@
 
 {{--    FORM AND DISPLAY--}}
     <div class="mx-auto  hidden   relative max-w-6xl p-12">
-        @csrf
         <div class="flex flex-col md:flex-row  justify-center">
             <div class="md:w-1/2 max-w-md flex flex-col justify-center">
                 <div class="md:text-4xl text-xl font-black uppercase">Dolphin Cove</div>
@@ -33,7 +32,7 @@
                 <div class="shadow-2xl rounded flex-auto max-w-sm p-10 pb-20">
 
                     <form action="{{url("/add-hotel")}}" method="post" class="hidden">
-
+                        @csrf
                         <div class="text-4xl mb-15 ">Add Hotel</div>
 
                         <div class="w-full">
@@ -62,7 +61,7 @@
                     </form>
 
                     <form action="{{url("/add-tour-company")}}" method="post" class="hidden">
-
+                        @csrf
                         <div class="text-4xl mb-15 ">Add Tour Company</div>
 
                         <div class="w-full">
@@ -91,7 +90,7 @@
                     </form>
 
                     <form action="{{url("/add-programme")}}" method="post" class="hidden">
-
+                        @csrf
                         <div class="text-4xl mb-15 ">Add Programme</div>
 
 
@@ -138,7 +137,7 @@
                     </form>
 
                     <form action="{{url("/add-entity-type")}}" method="post" class="hidden">
-
+                        @csrf
                         <div class="text-4xl mb-15 ">Add Entity Type</div>
 
 
@@ -167,7 +166,7 @@
                     </form>
 
                     <form action="{{url("/add-guest-type")}}" method="post" class="hidden">
-
+                        @csrf
                         <div class="text-4xl mb-15 ">Add Guest Type</div>
 
                         <div class="w-full">
@@ -197,7 +196,7 @@
                     </form>
 
                     <form action="{{url("/add-payment-type")}}" method="post" class="hidden">
-
+                        @csrf
                         <div class="text-4xl mb-15 ">Add Payment Type</div>
 
 
