@@ -36,7 +36,50 @@ class ProgramSeeder extends Seeder
             'excursion_date' => "2021-09-16 08:18:13",
             'created_at' => "2021-09-16 08:18:13",
             'updated_at' => "2021-09-16 08:18:13",
-        ]
+        ],[
+            'programme_name' => "Central Park",
+            'programme_cost' => 2000,
+            'capacity' => 40,
+            'excursion_date' => "2021-09-16 08:18:13",
+            'created_at' => "2021-09-16 08:18:13",
+            'updated_at' => "2021-09-16 08:18:13",
+        ],[
+            'programme_name' => "Horse Riding",
+            'programme_cost' => 3500,
+            'capacity' => 40,
+            'excursion_date' => "2021-09-16 08:18:13",
+            'created_at' => "2021-09-16 08:18:13",
+            'updated_at' => "2021-09-16 08:18:13",
+        ],[
+            'programme_name' => "Boat Riding",
+            'programme_cost' => 5000,
+            'capacity' => 40,
+            'excursion_date' => "2021-09-16 08:18:13",
+            'created_at' => "2021-09-16 08:18:13",
+            'updated_at' => "2021-09-16 08:18:13",
+        ],[
+            'programme_name' => "Jet Ski Riding",
+            'programme_cost' => 6500,
+            'capacity' => 40,
+            'excursion_date' => "2021-09-16 08:18:13",
+            'created_at' => "2021-09-16 08:18:13",
+            'updated_at' => "2021-09-16 08:18:13",
+        ],[
+            'programme_name' => "Falls Climbing",
+            'programme_cost' => 8000,
+            'capacity' => 40,
+            'excursion_date' => "2021-09-16 08:18:13",
+            'created_at' => "2021-09-16 08:18:13",
+            'updated_at' => "2021-09-16 08:18:13",
+        ],
+        [
+            'programme_name' => "Beach",
+            'programme_cost' => 8000,
+            'capacity' => 40,
+            'excursion_date' => "2021-09-16 08:18:13",
+            'created_at' => "2021-09-16 08:18:13",
+            'updated_at' => "2021-09-16 08:18:13",
+        ],
     ];
 
     public function run()
