@@ -8,34 +8,33 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
-<body>
+<body class="bg-gray-100  text-gray-700  font-sans quicksand">
 
-<div class="h-screen w-screen flex items-center justify-center">
-
-    <div class="shadow-2xl h-56 w-1/2 flex-col rounded-xl  flex justify-center items-center">
-
-        <div class="flex justify-around w-full ">
-            <div>
-                <a
-                    href="{{url("/booking/walk-in-booking")}}"
-                    class="border border-indigo-500 bg-indigo-500 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-indigo-600 focus:outline-none focus:shadow-outline"
-                >
-                    Walk-In Booking
-                </a>
-            </div>
-
-            <div>
-                <a
-                    href="{{url("/booking/tour-company-booking")}}"
-                    class="border border-indigo-500 bg-indigo-500 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-indigo-600 focus:outline-none focus:shadow-outline"
-                >
-                    Tour Company Booking
-                </a>
-            </div>
-
+    <div class="h-screen w-screen">
+    {{--<nav class="flex justify-between h-1/12 px-10 p-2 bg-black shadow-2xl">--}}
+    {{--    <div class="text-white text-center text-2xl font-bold text-blue-300"><span class="text-blue-500">Dolphin</span> Cove</div>--}}
+    {{--    <a href="/settings" class="text-white text-center hover:border border w-20 p-1 rounded transform duration-300 hover:scale-110 hover:border-blue-300 hover:bg-blue-300 hover:text-black text-xl">Setting</a>--}}
+    {{--</nav>--}}
+    <!-- component -->
+    
+    <div class=" flex items-center w-full  h-full w-full   text-center">
+        <div class="grid md:grid-cols-2 w-full h-full sm:grid-cols-1 lg:grid-cols-2   gap-10">
+    
+    
+    
+            <a href="{{url("/booking/walk-in-booking")}}" class="bg-white justify-center items-center hover:shadow-2xl flex overflow-hidden hover:bg-green-100 border border-gray-200 ">
+                <div class="m-2 flex items-center text-justify  text-sm">
+                    <p class="text-6xl">Walk-In Booking</p>
+                </div>
+            </a>
+    
+            <a href="{{url("/booking/tour-company-booking")}}" class="bg-white justify-center items-center hover:shadow-2xl flex overflow-hidden hover:bg-green-100 border border-gray-200">
+                <div class="m-2 flex items-center text-justify text-sm">
+                    <p class="text-6xl">Tour Company Booking</p>
+                </div>
+            </a>
         </div>
     </div>
-</div>
-
-</body>
-</html>
+    </div>
+    </body>
+    </html>

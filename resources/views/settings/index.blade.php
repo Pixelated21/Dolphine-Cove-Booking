@@ -15,7 +15,7 @@
 
 
 {{--    FORM AND DISPLAY--}}
-    <div class="formBody mx-auto  hidden   relative max-w-6xl p-12">
+    <div class="mx-auto  hidden   relative max-w-6xl p-12">
         <div class="flex flex-col md:flex-row  justify-center">
             <div class="md:w-1/2 max-w-md flex flex-col justify-center">
                 <div class="md:text-4xl text-xl font-black uppercase">Dolphin Cove</div>
@@ -31,7 +31,7 @@
             <div id="displayAlterForm" class="md:w-1/2  flex justify-start mt-5  md:justify-end w-full md:w-1/2 ">
                 <div class="shadow-2xl rounded flex-auto max-w-sm p-10 pb-20">
 
-                    <form action="{{url("/add-hotel")}}" method="post" class="add-hotel hidden">
+                    <form action="{{url("/add-hotel")}}" method="post" class="hidden">
                         @csrf
                         <div class="text-4xl mb-15 ">Add Hotel</div>
 
@@ -45,22 +45,22 @@
 
                         <div class="flex w-full mt-10 gap-3">
                             <div class= w-full">
-                                <button id="addHotel-back-btn" class="addHote-back-btn relative shadow-md font-medium py-2 px-4 text-green-100
-                                    cursor-pointer rounded text-lg tr-mt bg-red-600  absolute text-center w-full">
+                                <button id="back-btn" class="relative shadow-md font-medium py-2 px-4 text-green-100
+                  cursor-pointer rounded text-lg tr-mt bg-red-600  absolute text-center w-full">
                                     Back
                                 </button>
                             </div>
 
                             <div class="w-full">
                                 <button id="book-btn" class="relative shadow-md font-medium py-2 px-4 text-green-100
-                                    cursor-pointer bg-teal-600 rounded text-lg tr-mt bg-green-500  absolute text-center w-full">
+                  cursor-pointer bg-teal-600 rounded text-lg tr-mt bg-green-500  absolute text-center w-full">
                                     Add Hotel
                                 </button>
                             </div>
                         </div>
                     </form>
 
-                    <form action="{{url("/add-tour-company")}}" method="post" class="add-tour-company hidden">
+                    <form action="{{url("/add-tour-company")}}" method="post" class="hidden">
                         @csrf
                         <div class="text-4xl mb-15 ">Add Tour Company</div>
 
@@ -74,22 +74,22 @@
 
                         <div class="flex w-full mt-10 gap-3">
                             <div class= w-full">
-                                <button id="addTour-back-btn" class="relative shadow-md font-medium py-2 px-4 text-green-100
-                                    cursor-pointer rounded text-lg tr-mt bg-red-600  absolute text-center w-full">
+                                <button id="back-btn" class="relative shadow-md font-medium py-2 px-4 text-green-100
+                  cursor-pointer rounded text-lg tr-mt bg-red-600  absolute text-center w-full">
                                     Back
                                 </button>
                             </div>
 
                             <div class="w-full">
                                 <button id="book-btn" class="relative shadow-md font-medium py-2 px-4 text-green-100
-                                    cursor-pointer bg-teal-600 rounded text-lg tr-mt bg-green-500  absolute text-center w-full">
+                  cursor-pointer bg-teal-600 rounded text-lg tr-mt bg-green-500  absolute text-center w-full">
                                     Add Tour Company
                                 </button>
                             </div>
                         </div>
                     </form>
 
-                    <form action="{{url("/add-programme")}}" method="post" class="add-programme hidden">
+                    <form action="{{url("/add-programme")}}" method="post" class="hidden">
                         @csrf
                         <div class="text-4xl mb-15 ">Add Programme</div>
 
@@ -121,22 +121,22 @@
                         </div>
                         <div class="flex w-full mt-10 gap-3">
                             <div class= w-full">
-                                <button id="addProgramme-back-btn" class="relative shadow-md font-medium py-2 px-4 text-green-100
-                                    cursor-pointer rounded text-lg tr-mt bg-red-600  absolute text-center w-full">
+                                <button id="back-btn" class="relative shadow-md font-medium py-2 px-4 text-green-100
+                  cursor-pointer rounded text-lg tr-mt bg-red-600  absolute text-center w-full">
                                     Back
                                 </button>
                             </div>
 
                             <div class="w-full">
                                 <button id="book-btn" class="relative shadow-md font-medium py-2 px-4 text-green-100
-                                    cursor-pointer bg-teal-600 rounded text-lg tr-mt bg-green-500  absolute text-center w-full">
+                  cursor-pointer bg-teal-600 rounded text-lg tr-mt bg-green-500  absolute text-center w-full">
                                     Add Programme
                                 </button>
                             </div>
                         </div>
                     </form>
 
-                    <form action="{{url("/add-entity-type")}}" method="post" class="add-entity-type hidden">
+                    <form action="{{url("/add-entity-type")}}" method="post" class="hidden">
                         @csrf
                         <div class="text-4xl mb-15 ">Add Entity Type</div>
 
@@ -150,22 +150,22 @@
                         </div>
                         <div class="flex w-full mt-10 gap-3">
                             <div class= w-full">
-                                <button id="addEntity-back-btn" class="relative shadow-md font-medium py-2 px-4 text-green-100
-                                    cursor-pointer rounded text-lg tr-mt bg-red-600  absolute text-center w-full">
+                                <button id="back-btn" class="relative shadow-md font-medium py-2 px-4 text-green-100
+                  cursor-pointer rounded text-lg tr-mt bg-red-600  absolute text-center w-full">
                                     Back
                                 </button>
                             </div>
 
                             <div class="w-full">
                                 <button id="book-btn" class="relative shadow-md font-medium py-2 px-4 text-green-100
-                                    cursor-pointer bg-teal-600 rounded text-lg tr-mt bg-green-500  absolute text-center w-full">
+                  cursor-pointer bg-teal-600 rounded text-lg tr-mt bg-green-500  absolute text-center w-full">
                                    Add Entity
                                 </button>
                             </div>
                         </div>
                     </form>
 
-                    <form action="{{url("/add-guest-type")}}" method="post" class="add-guest-type hidden">
+                    <form action="{{url("/add-guest-type")}}" method="post" class="hidden">
                         @csrf
                         <div class="text-4xl mb-15 ">Add Guest Type</div>
 
@@ -180,22 +180,22 @@
 
                         <div class="flex w-full mt-10 gap-3">
                             <div class= w-full">
-                                <button id="addGuest-back-btn" class="relative shadow-md font-medium py-2 px-4 text-green-100
-                                    cursor-pointer rounded text-lg tr-mt bg-red-600  absolute text-center w-full">
+                                <button id="back-btn" class="relative shadow-md font-medium py-2 px-4 text-green-100
+                  cursor-pointer rounded text-lg tr-mt bg-red-600  absolute text-center w-full">
                                     Back
                                 </button>
                             </div>
 
                             <div class="w-full">
                                 <button id="book-btn" class="relative shadow-md font-medium py-2 px-4 text-green-100
-                                    cursor-pointer bg-teal-600 rounded text-lg tr-mt bg-green-500  absolute text-center w-full">
+                  cursor-pointer bg-teal-600 rounded text-lg tr-mt bg-green-500  absolute text-center w-full">
                                     Add Guest Type
                                 </button>
                             </div>
                         </div>
                     </form>
 
-                    <form action="{{url("/add-payment-type")}}" method="post" class="add-payment-type hidden">
+                    <form action="{{url("/add-payment-type")}}" method="post" class="hidden">
                         @csrf
                         <div class="text-4xl mb-15 ">Add Payment Type</div>
 
@@ -208,16 +208,16 @@
                             </div>
                         </div>
                         <div class="flex w-full mt-10 gap-3">
-                            <div class= w-full">
-                                <button id="addPayment-back-btn" class="relative shadow-md font-medium py-2 px-4 text-green-100
-                                    cursor-pointer rounded text-lg tr-mt bg-red-600  absolute text-center w-full">
+                            <div class= "w-full">
+                               <button id="back-btn" class="relative shadow-md font-medium py-2 px-4 text-green-100
+                  cursor-pointer rounded text-lg tr-mt bg-red-600  absolute text-center w-full">
                                     Back
                                 </button>
                             </div>
 
                             <div class="w-full">
                                 <button id="book-btn" class="relative shadow-md font-medium py-2 px-4 text-green-100
-                                    cursor-pointer bg-teal-600 rounded text-lg tr-mt bg-green-500  absolute text-center w-full">
+                  cursor-pointer bg-teal-600 rounded text-lg tr-mt bg-green-500  absolute text-center w-full">
                                     Add Payment Type
                                 </button>
                             </div>
@@ -233,7 +233,7 @@
 {{--    End Of Form--}}
 
 {{--Settings Display--}}
-    <div class="setting flex items-center    w-full   h-full w-full   text-center">
+    <div class=" flex items-center    w-full   h-full w-full   text-center">
 
 
         <div class="grid md:grid-cols-2  w-full h-full sm:grid-cols-1 lg:grid-cols-2   gap-10">
@@ -262,7 +262,10 @@
                     <div class=" w-full flex flex-col h-full">
                         <button id="add-entity-type-btn" href="{{url("/add-entity-type")}}" class="w-full h-full border flex items-center transition duration-300 hover:bg-green-100 justify-center text-2xl">Add Entity Type</button>
                         <button id="add-payment-type-btn" href="{{url("/add-payment-type")}}" class="w-full h-full border flex items-center transition duration-300 hover:bg-green-100 justify-center text-2xl">Add Payment Type</button>
-                        <button id="add-guest-type-btn" href="{{url("/add-guest-type")}}" class="w-full h-full border flex items-center transition duration-300 hover:bg-green-100 justify-center text-2xl">Add Guest Type</button>
+                        <div class="h-full flex ">
+                            <button id="add-guest-type-btn" href="{{url("/add-guest-type")}}" class="w-full h-full border flex items-center transition duration-300 hover:bg-green-100 justify-center text-2xl">Add Guest Type</button>
+                            <button id="add-guest-type-btn" href="{{url("/add-guest-type")}}" class="w-full h-full bg-red-500 text-white border flex items-center transition duration-300 hover:bg-green-100 justify-center text-2xl">Back</button>
+                        </div>
                 </div>
             </div>
 
@@ -277,105 +280,8 @@
 <script>
 
     $(document).ready(function (){
-        // variables to get buttons
-        var addHotel = $('#add-hotel-btn'),
-        addTour = $('#add-tour-btn'),
-        addProgram = $('#add-program-btn'),
-        addEntity = $('#add-entity-type-btn'),
-        addPayment = $('#add-payment-type-btn'),
-        addGuest = $('#add-guest-type-btn'),
-        // variable to get setting body
-        settingBody = $('.setting'),
-        // variables to get form body
-        formBody = $('.formBody'),
-        addHotelForm = $('.add-hotel'),
-        addTourCompanyForm = $('.add-tour-company'),
-        addProgrammeForm = $('.add-programme'),
-        addEntityForm = $('.add-entity-type'),
-        addGuestTypeForm = $('.add-guest-type'),
-        addPaymentTypeForm = $('.add-payment-type')
-
-        // function to hide/show element on click
-
-        addHotel.click(function(){
-            settingBody.addClass('hidden')
-            formBody.removeClass('hidden')
-            addHotelForm.removeClass('hidden')
-        })
-        addTour.click(function(){
-            settingBody.addClass('hidden')
-            formBody.removeClass('hidden')
-            addTourCompanyForm.removeClass('hidden')
-        })
-        addProgram.click(function(){
-            settingBody.addClass('hidden')
-            formBody.removeClass('hidden')
-            addPaymentTypeForm.removeClass('hidden')
-        })
-        addEntity.click(function(){
-            settingBody.addClass('hidden')
-            formBody.removeClass('hidden')
-            addEntityForm.removeClass('hidden')
-        })
-        addPayment.click(function(){
-            settingBody.addClass('hidden')
-            formBody.removeClass('hidden')
-            addPaymentTypeForm.removeClass('hidden')
-        })
-        addGuest.click(function(){
-            settingBody.addClass('hidden')
-            formBody.removeClass('hidden')
-            addGuestTypeForm.removeClass('hidden')
-        })
-
-        // function to go back
-
-       let  hotelbkbtn = $("#addHotel-back-btn"),
-       tourbkbtn = $("#addTour-back-btn"),
-       programmebkbtn = $("#addProgramme-back-btn"),
-       entitybkbtn = $("#addEntity-back-btn"),
-       guestbkbtn = $("#addGuest-back-btn"),
-       paymentbkbtn = $("#addPayment-back-btn")
-
-       hotelbkbtn.on("click",function(event){
-        event.preventDefault();
-        settingBody.removeClass('hidden')
-        formBody.addClass('hidden')
-        addHotelForm.addClass('hidden')
-
-       })
-       tourbkbtn.on("click",function(event){
-        event.preventDefault();
-        settingBody.removeClass('hidden')
-        formBody.addClass('hidden')
-        addTourCompanyForm.addClass('hidden')
-        
-       })
-       programmebkbtn.on("click",function(event){
-        event.preventDefault();
-        settingBody.removeClass('hidden')
-        formBody.addClass('hidden')
-        addProgrammeForm.addClass('hidden')
-       })
-       entitybkbtn.on("click",function(event){
-        event.preventDefault();
-        settingBody.removeClass('hidden')
-        formBody.addClass('hidden')
-        addEntityForm.addClass('hidden')
-       })
-       guestbkbtn.on("click",function(event){
-        event.preventDefault();
-        settingBody.removeClass('hidden')
-        formBody.addClass('hidden')
-        addGuestTypeForm.addClass('hidden')
-       })
-       paymentbkbtn.on("click",function(event){
-        event.preventDefault();
-        settingBody.removeClass('hidden')
-        formBody.addClass('hidden')
-        addPaymentTypeForm.addClass('hidden')
-       })
-
+        // let payment_add-btn =
+        console.log($("add-payment-type-btn"))
     });
 
 </script>
