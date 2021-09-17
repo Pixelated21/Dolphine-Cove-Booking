@@ -9,7 +9,13 @@
     <title>Document</title>
 </head>
 <body>
-<div class="dark"></div>
+
+<div class="h-screen flex flex-col w-screen">
+
+    <nav class="flex justify-between h-1/12 px-10 p-2 bg-black shadow-2xl">
+        <div class="text-white text-center text-2xl font-bold text-blue-300"><span class="text-blue-500">Dolphin</span> Cove</div>
+        <a href="{{route("Homepage")}}" class="text-white text-center hover:border border w-36 p-1 rounded transform duration-300 hover:scale-110 hover:border-blue-300 hover:bg-blue-300 hover:text-black text-xl">Back</a>
+    </nav>
 <!-- component -->
 <div class="overflow-x-auto h-screen w-screen">
     <div class=" bg-gray-100  h-full w-full flex items-center justify-center bg-gray-100 font-sans overflow-hidden">
@@ -39,18 +45,26 @@
                             </div>
                         </td>
                         <td class="py-3 px-6 text-left">
-                            <div class="flex items-center">
+                            <div class="flex justify-center items-center">
                                 <span class="font-medium">{{(\App\Models\Guest::where("guests.guest_id","=",$booking->guest_id)->get("first_nm"))[0]->first_nm}}</span>
                             </div>
                         </td>
                         <td class="py-3 px-6 text-left">
-                            <div class="flex items-center">
+                            <div class="flex justify-center items-center">
                                 <span class="font-medium">{{(\App\Models\Guest::where("guests.guest_id","=",$booking->guest_id)->get("last_nm"))[0]->last_nm}}</span>
                             </div>
                         </td>
                         <td class="py-3 px-6 text-center">
-                            <div class="flex items-center">
-                                <span class="font-medium">{{(\App\Models\Tour_Company::where("tour_companies.tour_company_id","=",$booking->tour_company_id)->get("company_name"))[0]->company_name}}</span>
+                            <div class="flex justify-center items-center">
+                                <span class="font-medium">
+                                    @if((\App\Models\Tour_Company::where("tour_companies.tour_company_id","=",$booking->tour_company_id)->get("company_name"))->first->company_name === null)
+                                    N/A
+                                    @else
+                                        {{(\App\Models\Tour_Company::where("tour_companies.tour_company_id","=",$booking->tour_company_id)->get("company_name"))[0]->company_name}}
+
+                                @endif
+
+                                </span>
                             </div>
                         </td>
                         <td class="py-3 px-6 text-center">
@@ -79,6 +93,7 @@
             </div>
         </div>
     </div>
+</div>
 </div>
 
 </body>

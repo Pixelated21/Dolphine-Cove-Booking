@@ -21,9 +21,6 @@ class Tour_Company_Booking extends Controller
         $programs = Program::all();
         $payment_types = Payment_Type::all();
 
-//        dd($hotels);
-
-
 
         return view("guest_type.tour-booking")
             ->with(compact("tour_companies",$tour_companies))
@@ -31,19 +28,17 @@ class Tour_Company_Booking extends Controller
             ->with(compact("programs",$programs))
             ->with(compact("payment_types",$payment_types));
 
-
     }
 
     public function bookGuest(Request $request) {
 
-//        dd($request->all());
+        dd($request->all());
 
         $booking = new Booking();
-        $booking->guest_id = 1;
         $booking->programme_id = $request->get('prog_nm');
         $booking->tour_company_id = $request->get("tour_comp");
         $booking->payment_type_id = $request->get("payment_type");
-        $booking->date_booked = strtotime(date("Y-m-d"));
+        $booking->date_booked = now("Jamaica");
         $guest = new Guest();
         $guest->first_nm = $request->get('first_nm');
         $guest->last_nm = $request->get('last_nm');
@@ -55,7 +50,7 @@ class Tour_Company_Booking extends Controller
             ->where("programme_id","=",$request->get("prog_nm"))
             ->get("programme_cost");
 
-        if ($request->get("payment_type") === "1") {
+        if(Payment_Type::find($request->get("payment_type"))->get()[0]->payment_type === "credit" ) {
 
             $findCredit = Tour_Company::find(($request->get("tour_comp")))
                 ->where("tour_company_id","=",$request->get("tour_comp"))
@@ -66,7 +61,7 @@ class Tour_Company_Booking extends Controller
                 ->update(["credit_amt" => $findCredit[0]->credit_amt += ((int)$progCost[0]->programme_cost)]);
 
         }
-        else if($request->get("payment_type") === "2"){
+        else if(Payment_Type::find($request->get("payment_type"))->get()[0]->payment_type === "2"){
 
             $newActivity = new Payment_Activity();
             $newActivity->amount_paid = $progCost[0]->programme_cost;

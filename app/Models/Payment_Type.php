@@ -9,6 +9,7 @@ class Payment_Type extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
     protected $primaryKey = "payment_type_id";
     protected $table = "payment_types";
 
