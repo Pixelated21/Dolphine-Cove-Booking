@@ -10,8 +10,13 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
+
 <body>
 
+<nav class="flex justify-between px-10 p-2 bg-black shadow-2xl">
+    <div class="text-white text-center text-2xl font-bold text-blue-300"><span class="text-blue-500">Dolphin</span> Cove</div>
+    <a href="#" class="text-white text-center hover:border border w-20 p-1 rounded transform duration-300 hover:scale-110 hover:border-blue-300 hover:bg-blue-300 hover:text-black text-xl">Back</a>
+</nav>
 <!-- component -->
 <form action="{{url('/walk-in-booking-book ')}}" method="post" class="mx-auto relative max-w-6xl p-12">
     @csrf
