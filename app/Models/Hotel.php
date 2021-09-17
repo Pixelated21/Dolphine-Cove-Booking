@@ -9,6 +9,9 @@ class Hotel extends Model
 {
     use HasFactory;
 
+    public $primaryKey = "hotel_id";
+    public $table = "hotels";
+
     public $timestamps = false;
 
     public function guest() {
