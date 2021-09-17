@@ -9,6 +9,8 @@ class Hotel extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
     public function guest() {
         return $this->hasMany(Guest::class);
     }
