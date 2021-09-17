@@ -208,8 +208,8 @@
                             </div>
                         </div>
                         <div class="flex w-full mt-10 gap-3">
-                            <div class= w-full">
-                                <button id="back-btn" class="relative shadow-md font-medium py-2 px-4 text-green-100
+                            <div class= "w-full">
+                               <button id="back-btn" class="relative shadow-md font-medium py-2 px-4 text-green-100
                   cursor-pointer rounded text-lg tr-mt bg-red-600  absolute text-center w-full">
                                     Back
                                 </button>
@@ -262,7 +262,10 @@
                     <div class=" w-full flex flex-col h-full">
                         <button id="add-entity-type-btn" href="{{url("/add-entity-type")}}" class="w-full h-full border flex items-center transition duration-300 hover:bg-green-100 justify-center text-2xl">Add Entity Type</button>
                         <button id="add-payment-type-btn" href="{{url("/add-payment-type")}}" class="w-full h-full border flex items-center transition duration-300 hover:bg-green-100 justify-center text-2xl">Add Payment Type</button>
-                        <button id="add-guest-type-btn" href="{{url("/add-guest-type")}}" class="w-full h-full border flex items-center transition duration-300 hover:bg-green-100 justify-center text-2xl">Add Guest Type</button>
+                        <div class="h-full flex ">
+                            <button id="add-guest-type-btn" href="{{url("/add-guest-type")}}" class="w-full h-full border flex items-center transition duration-300 hover:bg-green-100 justify-center text-2xl">Add Guest Type</button>
+                            <button id="add-guest-type-btn" href="{{url("/add-guest-type")}}" class="w-full h-full bg-red-500 text-white border flex items-center transition duration-300 hover:bg-green-100 justify-center text-2xl">Back</button>
+                        </div>
                 </div>
             </div>
 
