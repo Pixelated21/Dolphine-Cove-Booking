@@ -9,8 +9,10 @@ class Entities extends Model
 {
     use HasFactory;
 
+
+    public $timestamps = false;
     protected $primaryKey = "entity_id";
-    protected $table = "entities";
+    protected $table = "entity_types";
 
     public function guest(){
         return $this->belongsTo(Guest::class,);

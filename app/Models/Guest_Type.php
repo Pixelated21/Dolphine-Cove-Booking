@@ -9,6 +9,7 @@ class Guest_Type extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
     protected $primaryKey = "guest_type_id";
     protected $table = "guest_types";
 

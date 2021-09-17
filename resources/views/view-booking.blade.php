@@ -39,18 +39,26 @@
                             </div>
                         </td>
                         <td class="py-3 px-6 text-left">
-                            <div class="flex items-center">
+                            <div class="flex justify-center items-center">
                                 <span class="font-medium">{{(\App\Models\Guest::where("guests.guest_id","=",$booking->guest_id)->get("first_nm"))[0]->first_nm}}</span>
                             </div>
                         </td>
                         <td class="py-3 px-6 text-left">
-                            <div class="flex items-center">
+                            <div class="flex justify-center items-center">
                                 <span class="font-medium">{{(\App\Models\Guest::where("guests.guest_id","=",$booking->guest_id)->get("last_nm"))[0]->last_nm}}</span>
                             </div>
                         </td>
                         <td class="py-3 px-6 text-center">
-                            <div class="flex items-center">
-                                <span class="font-medium">{{(\App\Models\Tour_Company::where("tour_companies.tour_company_id","=",$booking->tour_company_id)->get("company_name"))[0]->company_name}}</span>
+                            <div class="flex justify-center items-center">
+                                <span class="font-medium">
+                                    @if((\App\Models\Tour_Company::where("tour_companies.tour_company_id","=",$booking->tour_company_id)->get("company_name"))->first->company_name === null)
+                                    N/A
+                                    @else
+                                        {{(\App\Models\Tour_Company::where("tour_companies.tour_company_id","=",$booking->tour_company_id)->get("company_name"))[0]->company_name}}
+
+                                @endif
+
+                                </span>
                             </div>
                         </td>
                         <td class="py-3 px-6 text-center">

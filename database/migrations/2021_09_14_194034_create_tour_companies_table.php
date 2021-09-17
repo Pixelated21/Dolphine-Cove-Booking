@@ -16,7 +16,7 @@ class CreateTourCompaniesTable extends Migration
         Schema::create('tour_companies',function (Blueprint $table) {
             $table->id("tour_company_id");
             $table->string("company_name");
-            $table->string("credit_amt");
+            $table->integer("credit_amt")->default(0);
             $table->timestamps();
         });
     }
