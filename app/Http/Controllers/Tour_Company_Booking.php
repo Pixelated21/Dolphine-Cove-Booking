@@ -21,7 +21,7 @@ class Tour_Company_Booking extends Controller
         $programs = Program::all();
         $payment_types = Payment_Type::all();
 
-//        dd($programs);
+//        dd($hotels);
 
 
 

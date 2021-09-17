@@ -13,7 +13,9 @@
 
 <div class="h-screen w-screen">
 
-    <div class="mx-auto  relative max-w-6xl p-12">
+
+{{--    FORM AND DISPLAY--}}
+    <div class="mx-auto  hidden   relative max-w-6xl p-12">
         @csrf
         <div class="flex flex-col md:flex-row  justify-center">
             <div class="md:w-1/2 max-w-md flex flex-col justify-center">
@@ -30,23 +32,18 @@
             <div id="displayAlterForm" class="md:w-1/2  flex justify-start mt-5  md:justify-end w-full md:w-1/2 ">
                 <div class="shadow-2xl rounded flex-auto max-w-sm p-10 pb-20">
 
-                    <form action="" method="post">
+                    <form action="{{url("/add-hotel")}}" method="post" class="hidden">
 
-                        <div class="text-4xl mb-15 ">Hotel</div>
+                        <div class="text-4xl mb-15 ">Add Hotel</div>
 
                         <div class="w-full">
-                            <div class="font-bold h-6 mt-3 text-gray-600 text-xs leading-8 uppercase">Programme Cost</div>
-                            <div class="my-2 bg-white p-1 flex border border-gray-200 rounded"><input disabled placeholder="5000"
+                            <div class="font-bold h-6 mt-3 text-gray-600 text-xs leading-8 uppercase">Hotel Name</div>
+                            <div class="my-2 bg-white p-1 flex border border-gray-200 rounded"><input  placeholder="Hotel Name"
+                                                                                                      name="hotel_nm"
                                                                                                       class="p-1 px-2 appearance-none outline-none w-full text-gray-800">
                             </div>
                         </div>
 
-                        <div class="w-full">
-                            <div class="font-bold h-6 mt-3 text-gray-600 text-xs leading-8 uppercase">Excursion Date</div>
-                            <div class="my-2 bg-white p-1 flex border border-gray-200 rounded"><input disabled placeholder="09/02/2001"
-                                                                                                      class="p-1 px-2 appearance-none outline-none w-full text-gray-800">
-                            </div>
-                        </div>
                         <div class="flex w-full mt-10 gap-3">
                             <div class= w-full">
                                 <button id="back-btn" class="relative shadow-md font-medium py-2 px-4 text-green-100
@@ -58,29 +55,24 @@
                             <div class="w-full">
                                 <button id="book-btn" class="relative shadow-md font-medium py-2 px-4 text-green-100
                   cursor-pointer bg-teal-600 rounded text-lg tr-mt bg-green-500  absolute text-center w-full">
-                                    Book
+                                    Add Hotel
                                 </button>
                             </div>
                         </div>
                     </form>
 
-                    <form action="" method="post">
+                    <form action="{{url("/add-tour-company")}}" method="post" class="hidden">
 
-                        <div class="text-4xl mb-15 "></div>
+                        <div class="text-4xl mb-15 ">Add Tour Company</div>
 
                         <div class="w-full">
-                            <div class="font-bold h-6 mt-3 text-gray-600 text-xs leading-8 uppercase">Programme Cost</div>
-                            <div class="my-2 bg-white p-1 flex border border-gray-200 rounded"><input disabled placeholder="5000"
+                            <div class="font-bold h-6 mt-3 text-gray-600 text-xs leading-8 uppercase">Tour Company Name</div>
+                            <div class="my-2 bg-white p-1 flex border border-gray-200 rounded"><input placeholder="Tour Company Name"
+                                                                                                      name="tour_company_nm"
                                                                                                       class="p-1 px-2 appearance-none outline-none w-full text-gray-800">
                             </div>
                         </div>
 
-                        <div class="w-full">
-                            <div class="font-bold h-6 mt-3 text-gray-600 text-xs leading-8 uppercase">Excursion Date</div>
-                            <div class="my-2 bg-white p-1 flex border border-gray-200 rounded"><input disabled placeholder="09/02/2001"
-                                                                                                      class="p-1 px-2 appearance-none outline-none w-full text-gray-800">
-                            </div>
-                        </div>
                         <div class="flex w-full mt-10 gap-3">
                             <div class= w-full">
                                 <button id="back-btn" class="relative shadow-md font-medium py-2 px-4 text-green-100
@@ -92,26 +84,39 @@
                             <div class="w-full">
                                 <button id="book-btn" class="relative shadow-md font-medium py-2 px-4 text-green-100
                   cursor-pointer bg-teal-600 rounded text-lg tr-mt bg-green-500  absolute text-center w-full">
-                                    Book
+                                    Add Tour Company
                                 </button>
                             </div>
                         </div>
                     </form>
 
-                    <form action="" method="post">
+                    <form action="{{url("/add-programme")}}" method="post" class="hidden">
 
-                        <div class="text-4xl mb-15 ">Entity Type</div>
+                        <div class="text-4xl mb-15 ">Add Programme</div>
+
+
+
+                        <div class="w-full">
+                            <div class="font-bold h-6 mt-3 text-gray-600 text-xs leading-8 uppercase">Programme Name</div>
+                            <div class="my-2 bg-white p-1 flex border border-gray-200 rounded"><input placeholder="Programme Name"
+                                                                                                      name="prog_nm"
+                                                                                                      class="p-1 px-2 appearance-none outline-none w-full text-gray-800">
+                            </div>
+                        </div>
 
                         <div class="w-full">
                             <div class="font-bold h-6 mt-3 text-gray-600 text-xs leading-8 uppercase">Programme Cost</div>
-                            <div class="my-2 bg-white p-1 flex border border-gray-200 rounded"><input disabled placeholder="5000"
+                            <div class="my-2 bg-white p-1 flex border border-gray-200 rounded"><input placeholder="Programme Cost"
+                                                                                                      name="prog_cost"
+                                                                                                      type="number"
                                                                                                       class="p-1 px-2 appearance-none outline-none w-full text-gray-800">
                             </div>
                         </div>
 
                         <div class="w-full">
                             <div class="font-bold h-6 mt-3 text-gray-600 text-xs leading-8 uppercase">Excursion Date</div>
-                            <div class="my-2 bg-white p-1 flex border border-gray-200 rounded"><input disabled placeholder="09/02/2001"
+                            <div class="my-2 bg-white p-1 flex border border-gray-200 rounded"><input name="excur_dt"
+                                                                                                      type="date"
                                                                                                       class="p-1 px-2 appearance-none outline-none w-full text-gray-800">
                             </div>
                         </div>
@@ -126,26 +131,21 @@
                             <div class="w-full">
                                 <button id="book-btn" class="relative shadow-md font-medium py-2 px-4 text-green-100
                   cursor-pointer bg-teal-600 rounded text-lg tr-mt bg-green-500  absolute text-center w-full">
-                                    Book
+                                    Add Programme
                                 </button>
                             </div>
                         </div>
                     </form>
 
-                    <form action="" method="post">
+                    <form action="{{url("/add-entity-type")}}" method="post" class="hidden">
 
-                        <div class="text-4xl mb-15 ">Entity Type</div>
+                        <div class="text-4xl mb-15 ">Add Entity Type</div>
 
-                        <div class="w-full">
-                            <div class="font-bold h-6 mt-3 text-gray-600 text-xs leading-8 uppercase">Programme Cost</div>
-                            <div class="my-2 bg-white p-1 flex border border-gray-200 rounded"><input disabled placeholder="5000"
-                                                                                                      class="p-1 px-2 appearance-none outline-none w-full text-gray-800">
-                            </div>
-                        </div>
 
                         <div class="w-full">
-                            <div class="font-bold h-6 mt-3 text-gray-600 text-xs leading-8 uppercase">Excursion Date</div>
-                            <div class="my-2 bg-white p-1 flex border border-gray-200 rounded"><input disabled placeholder="09/02/2001"
+                            <div class="font-bold h-6 mt-3 text-gray-600 text-xs leading-8 uppercase">Entity Type</div>
+                            <div class="my-2 bg-white p-1 flex border border-gray-200 rounded"><input placeholder="Entity Type"
+                                                                                                      name="entity_type"
                                                                                                       class="p-1 px-2 appearance-none outline-none w-full text-gray-800">
                             </div>
                         </div>
@@ -160,29 +160,25 @@
                             <div class="w-full">
                                 <button id="book-btn" class="relative shadow-md font-medium py-2 px-4 text-green-100
                   cursor-pointer bg-teal-600 rounded text-lg tr-mt bg-green-500  absolute text-center w-full">
-                                    Book
+                                   Add Entity
                                 </button>
                             </div>
                         </div>
                     </form>
 
-                    <form action="" method="post">
+                    <form action="{{url("/add-guest-type")}}" method="post" class="hidden">
 
-                        <div class="text-4xl mb-15 ">Entity Type</div>
+                        <div class="text-4xl mb-15 ">Add Guest Type</div>
 
                         <div class="w-full">
-                            <div class="font-bold h-6 mt-3 text-gray-600 text-xs leading-8 uppercase">Programme Cost</div>
-                            <div class="my-2 bg-white p-1 flex border border-gray-200 rounded"><input disabled placeholder="5000"
+                            <div class="font-bold h-6 mt-3 text-gray-600 text-xs leading-8 uppercase">Guest Type</div>
+                            <div class="my-2 bg-white p-1 flex border border-gray-200 rounded"><input placeholder="Guest Type"
+                                                                                                      name="guest_type"
                                                                                                       class="p-1 px-2 appearance-none outline-none w-full text-gray-800">
                             </div>
                         </div>
 
-                        <div class="w-full">
-                            <div class="font-bold h-6 mt-3 text-gray-600 text-xs leading-8 uppercase">Excursion Date</div>
-                            <div class="my-2 bg-white p-1 flex border border-gray-200 rounded"><input disabled placeholder="09/02/2001"
-                                                                                                      class="p-1 px-2 appearance-none outline-none w-full text-gray-800">
-                            </div>
-                        </div>
+
                         <div class="flex w-full mt-10 gap-3">
                             <div class= w-full">
                                 <button id="back-btn" class="relative shadow-md font-medium py-2 px-4 text-green-100
@@ -194,26 +190,21 @@
                             <div class="w-full">
                                 <button id="book-btn" class="relative shadow-md font-medium py-2 px-4 text-green-100
                   cursor-pointer bg-teal-600 rounded text-lg tr-mt bg-green-500  absolute text-center w-full">
-                                    Book
+                                    Add Guest Type
                                 </button>
                             </div>
                         </div>
                     </form>
 
-                    <form action="" method="post">
+                    <form action="{{url("/add-payment-type")}}" method="post" class="hidden">
 
-                        <div class="text-4xl mb-15 ">Entity Type</div>
+                        <div class="text-4xl mb-15 ">Add Payment Type</div>
 
-                        <div class="w-full">
-                            <div class="font-bold h-6 mt-3 text-gray-600 text-xs leading-8 uppercase">Programme Cost</div>
-                            <div class="my-2 bg-white p-1 flex border border-gray-200 rounded"><input disabled placeholder="5000"
-                                                                                                      class="p-1 px-2 appearance-none outline-none w-full text-gray-800">
-                            </div>
-                        </div>
 
                         <div class="w-full">
-                            <div class="font-bold h-6 mt-3 text-gray-600 text-xs leading-8 uppercase">Excursion Date</div>
-                            <div class="my-2 bg-white p-1 flex border border-gray-200 rounded"><input disabled placeholder="09/02/2001"
+                            <div class="font-bold h-6 mt-3 text-gray-600 text-xs leading-8 uppercase">Payment Type</div>
+                            <div class="my-2 bg-white p-1 flex border border-gray-200 rounded"><input placeholder="Payment Type"
+                                                                                                      name="payment_type"
                                                                                                       class="p-1 px-2 appearance-none outline-none w-full text-gray-800">
                             </div>
                         </div>
@@ -228,7 +219,7 @@
                             <div class="w-full">
                                 <button id="book-btn" class="relative shadow-md font-medium py-2 px-4 text-green-100
                   cursor-pointer bg-teal-600 rounded text-lg tr-mt bg-green-500  absolute text-center w-full">
-                                    Book
+                                    Add Payment Type
                                 </button>
                             </div>
                         </div>
@@ -240,9 +231,10 @@
 
         </div>
     </div>
+{{--    End Of Form--}}
 
-
-    <div class=" flex items-center hidden   w-full   h-full w-full   text-center">
+{{--Settings Display--}}
+    <div class=" flex items-center    w-full   h-full w-full   text-center">
 
 
         <div class="grid md:grid-cols-2  w-full h-full sm:grid-cols-1 lg:grid-cols-2   gap-10">
@@ -278,6 +270,7 @@
         </div>
     </div>
 </div>
+{{--    End OF Settings--}}
 </div>
 </body>
 </html>
