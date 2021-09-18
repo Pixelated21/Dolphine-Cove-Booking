@@ -17,7 +17,9 @@ class DatabaseSeeder extends Seeder
         $this->call([
             ProgramSeeder::class,
             TourCompanySeeder::class,
-            Hotelseeder::class
+            Hotelseeder::class,
+            paymentType::class,
+            GuestTypesseeder::class
         ]);
     }
 }
