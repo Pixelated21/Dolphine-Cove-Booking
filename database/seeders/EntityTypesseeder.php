@@ -14,7 +14,7 @@ class EntityTypesseeder extends Seeder
      */
     protected $entity = [
         [
-            'entity_type' => 'Walk-In'
+            'entity_type' => 'Guest'
         ],
         [
             'entity_type' => 'TourCompany'
