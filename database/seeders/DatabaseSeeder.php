@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\Entities;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -21,7 +20,7 @@ class DatabaseSeeder extends Seeder
             Hotelseeder::class,
             paymentType::class,
             GuestTypesseeder::class,
-            Entities::class,
+            EntityTypesseeder::class,
         ]);
     }
 }

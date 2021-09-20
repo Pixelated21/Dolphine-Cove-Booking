@@ -7,21 +7,24 @@ use Illuminate\Database\Seeder;
 
 class EntityTypesseeder extends Seeder
 {
-
-    protected $container = [
-        ["entity_type" => "Guest"],
-
-        ["entity_type" => "Tour_Company"]
-    ];
     /**
      * Run the database seeds.
      *
      * @return void
      */
+    protected $entity = [
+        [
+            'entity_type' => 'Guest'
+        ],
+        [
+            'entity_type' => 'TourCompany'
+        ]
+    ];
+
     public function run()
     {
-        foreach ($this->container as $container){
-            Entities::create($container);
+        foreach ($this->entity as $entity) {
+            Entities::create($entity);
         }
     }
 }
