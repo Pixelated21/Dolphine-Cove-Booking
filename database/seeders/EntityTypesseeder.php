@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Entities;
 use Illuminate\Database\Seeder;
 
 class EntityTypesseeder extends Seeder
@@ -11,8 +12,19 @@ class EntityTypesseeder extends Seeder
      *
      * @return void
      */
+    protected $entity = [
+        [
+            'entity_type' => 'Walk-In'
+        ],
+        [
+            'entity_type' => 'TourCompany'
+        ]
+    ];
+
     public function run()
     {
-        //
+        foreach ($this->entity as $entity) {
+            Entities::create($entity);
+        }
     }
 }
