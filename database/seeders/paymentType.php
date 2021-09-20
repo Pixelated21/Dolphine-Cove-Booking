@@ -14,10 +14,10 @@ class paymentType extends Seeder
      */
     protected $payment_type = [
         [
-            'payment_type' => 'credit'
+            'payment_type' => 'Credit'
         ],
         [
-            'payment_type' => 'cash'
+            'payment_type' => 'Cash'
         ]
     ];
 

@@ -15,7 +15,7 @@
 
 <div class=" h-screen w-screen flex flex-col overflow-hidden">
 
-    <iframe  class="h-screen w-screen absolute filter brightness-50"  src="https://www.youtube.com/embed/Moc4F9sBRqg?autoplay=1&controls='0&loop=1'" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; fullscreen" allowtransparency=""    allowfullscreen></iframe>
+{{--    <iframe  class="h-screen w-screen absolute filter brightness-50"  src="https://www.youtube.com/embed/Moc4F9sBRqg?autoplay=1&controls='0&loop=1'" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; fullscreen" allowtransparency=""    allowfullscreen></iframe>--}}
 
     <nav class="flex relative justify-between px-10 p-2 bg-black shadow-2xl">
         <div class="text-white text-center relative text-2xl font-bold text-blue-300"><span class="text-blue-500">Dolphin</span> Cove</div>
@@ -108,6 +108,7 @@
 
 
 
+
                         </div>
                     </div>
 
@@ -119,11 +120,21 @@
 
                                 <select name="prog_cost"
                                         id="prog_cost"
+                                        hidden
+                                        disabled
                                         class="w-full p-1 active:outline-none focus:outline-none rounded p-2.5 border border-gray-200 ">
                                     @foreach($programs as $program)
                                         <option value="{{$program->programme_cost}}">{{$program->programme_cost}}</option>
                                     @endforeach
                                 </select>
+
+                                <input
+                                    value="0"
+                                    type="text"
+                                    id="total"
+                                    class="w-full p-1 active:outline-none focus:outline-none rounded p-2.5 border border-gray-200 ">
+
+
                             </div>
                         </div>
 
@@ -193,12 +204,24 @@
         let prg_nm = $("#prog_nm");
         let prg_cost = $("#prog_cost");
         let excu_dt = $("#excur_dt");
+        let total = $("#total");
 
+
+
+        let totalsumarr = [];
 
         prg_nm.on("change",function (){
 
             prg_cost[0].options.selectedIndex = prg_nm[0].options.selectedIndex;
-            excu_dt[0].options.selectedIndex = prg_nm[0].options.selectedIndex;
+
+            totalsumarr.push(Number(prg_cost[0].value));
+            let totalSum = 0;
+
+            for (let i = 0; i < totalsumarr.length; i++) {
+
+                totalSum += totalsumarr[i]
+            }
+            total[0].value = totalSum;
 
         });
 
