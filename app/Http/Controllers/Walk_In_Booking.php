@@ -27,10 +27,9 @@ class Walk_In_Booking extends Controller
 
     public function bookGuest(Request $request){
 
-        $booking = new Booking();
-        $booking->programme_id = $request->get('prog_nm');
-        $booking->payment_type_id  = Payment_Type::where("payment_type","=","Cash")->get()->first()->payment_type_id;
-        $booking->date_booked = strtotime(now("Jamaica"));
+//        dd($request->all());
+
+
         $guest = new Guest();
         $guest->first_nm = $request->get('first_nm');
         $guest->last_nm = $request->get('last_nm');
@@ -38,19 +37,35 @@ class Walk_In_Booking extends Controller
         $guest->hotel_id = $request->get('hotel');
 
 
-        $progCost = Program::find($request->get("prog_nm"))
-            ->where("programme_id","=",$request->get("prog_nm"))
-            ->get("programme_cost");
+        $progCost = [];
+
+        foreach ($request->get("prog_nm") as $index => $value) {
+            $progCost[] = Program::find($value)
+                ->where("programme_id", "=", $value)
+                ->first()->programme_cost;
+        }
+
+        $totalCost = array_sum($progCost);
 
         $newActivity = new Payment_Activity();
-        $newActivity->amount_paid = $progCost[0]->programme_cost;
+        $newActivity->amount_paid = $totalCost;
 
         $newPayment = new Payment_info();
         $newPayment->entity_type_id = 1;
         $guest->save();
         $guest->payment_info()->save($newPayment);
         $newPayment->payment_activity()->save($newActivity);
-        $guest->booking()->save($booking);
+
+        foreach ($request->get("prog_nm") as $index => $value) {
+
+            $booking = new Booking();
+            $booking->programme_id = $value;
+            $booking->tour_company_id = $request->get("tour_comp");
+            $booking->payment_type_id = 2;
+            $booking->date_booked = $request->get("date_booked");
+            $guest->booking()->save($booking);
+
+        }
 
         return redirect('/booking');
     }

@@ -2,10 +2,17 @@
 
 namespace Database\Seeders;
 
+use App\Models\Entities;
 use Illuminate\Database\Seeder;
 
 class EntityTypesseeder extends Seeder
 {
+
+    protected $container = [
+        ["entity_type" => "Guest"],
+
+        ["entity_type" => "Tour_Company"]
+    ];
     /**
      * Run the database seeds.
      *
@@ -13,6 +20,8 @@ class EntityTypesseeder extends Seeder
      */
     public function run()
     {
-        //
+        foreach ($this->container as $container){
+            Entities::create($container);
+        }
     }
 }

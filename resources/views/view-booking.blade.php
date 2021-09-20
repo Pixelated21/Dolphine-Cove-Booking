@@ -80,8 +80,7 @@
                         </td>
                         <td class="py-3 px-6 text-left">
                             <div class="flex items-center">
-                                <span>{{date("Y-m-d h:m:s")}}</span>
-{{--                                <span>{{(date("Y" ,strtotime($booking->date_booked)))}}</span>--}}
+                                <span class="font-medium">{{$booking->date_booked}}</span>
                             </div>
                         </td>
 

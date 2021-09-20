@@ -32,13 +32,8 @@ class Tour_Company_Booking extends Controller
 
     public function bookGuest(Request $request) {
 
-        dd($request->all());
+//        dd($request->all());
 
-        $booking = new Booking();
-        $booking->programme_id = $request->get('prog_nm');
-        $booking->tour_company_id = $request->get("tour_comp");
-        $booking->payment_type_id = $request->get("payment_type");
-        $booking->date_booked = now("Jamaica");
         $guest = new Guest();
         $guest->first_nm = $request->get('first_nm');
         $guest->last_nm = $request->get('last_nm');
@@ -46,19 +41,34 @@ class Tour_Company_Booking extends Controller
         $guest->hotel_id = $request->get('hotel');
         $guest->push();
 
-        $progCost = Program::find($request->get("prog_nm"))
-            ->where("programme_id","=",$request->get("prog_nm"))
-            ->get("programme_cost");
+        $progCost = [];
 
+        foreach ($request->get("prog_nm") as $index => $value) {
+            $progCost[] = Program::find($value)
+                ->where("programme_id", "=", $value)
+                ->first()->programme_cost;
+        }
+
+        $totalCost = array_sum($progCost);
+
+//        dd($totalCost);
+
+//        dd(Payment_Type::find($request->get("payment_type"))->get()[0]->payment_type);
         if(Payment_Type::find($request->get("payment_type"))->get()[0]->payment_type === "credit" ) {
+
 
             $findCredit = Tour_Company::find(($request->get("tour_comp")))
                 ->where("tour_company_id","=",$request->get("tour_comp"))
-                ->get("credit_amt");
+                ->first("credit_amt")->credit_amt;
+
+//            dd($findCredit);
+
+//            dd(Tour_Company::find($request->get("tour_comp"))->first()->credit_amt);
 
 
             $addCredit = Tour_Company::find($request->get("tour_comp"))
-                ->update(["credit_amt" => $findCredit[0]->credit_amt += ((int)$progCost[0]->programme_cost)]);
+                ->update(["credit_amt" => $findCredit += $totalCost]);
+
 
         }
         else if(Payment_Type::find($request->get("payment_type"))->get()[0]->payment_type === "2"){
@@ -75,7 +85,16 @@ class Tour_Company_Booking extends Controller
 
 
         }
-        $guest->booking()->save($booking);
+        foreach ($request->get("prog_nm") as $index => $value) {
+
+            $booking = new Booking();
+            $booking->programme_id = $value;
+            $booking->tour_company_id = $request->get("tour_comp");
+            $booking->payment_type_id = $request->get("payment_type");
+            $booking->date_booked = $request->get("date_booked");
+            $guest->booking()->save($booking);
+
+        }
 
         return redirect("/booking");
 

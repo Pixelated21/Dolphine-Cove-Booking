@@ -18,10 +18,10 @@ class GuestTypesseeder extends Seeder
             'guest_type' => 'Walk-In'
         ],
         [
-            'guest_type' => 'TourCompany'
+            'guest_type' => 'Tour Company'
         ]
     ];
-    
+
     public function run()
     {
         foreach ($this->guest_type as $guest_type) {

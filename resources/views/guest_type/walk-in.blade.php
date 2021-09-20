@@ -14,9 +14,9 @@
 <body>
 
 <div class=" h-screen w-screen flex flex-col">
-    <iframe  class="h-screen w-screen absolute filter brightness-50"  src="https://www.youtube.com/embed/Moc4F9sBRqg?autoplay=1&controls='0'" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; fullscreen" allowtransparency=""    allowfullscreen></iframe>
+    <iframe id="iframeId"  class="h-screen w-screen absolute filter brightness-50"  src="https://www.youtube.com/embed/Moc4F9sBRqg?autoplay=1&controls='0&loop=1'" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; fullscreen" allowtransparency=""    allowfullscreen></iframe>
 
-    <nav class="flex justify-between  px-10 p-2 bg-black shadow-2xl">
+    <nav class="flex relative justify-between  px-10 p-2 bg-black shadow-2xl">
         <div class="text-white  relative text-center text-2xl font-bold text-blue-300"><span class="text-blue-500">Dolphin</span> Cove</div>
         <a href="{{route("Booking")}}" class="text-white text-center hover:border border w-20 p-1 rounded transform duration-300 hover:scale-110 hover:border-blue-300 hover:bg-blue-300 hover:text-black text-xl">Back</a>
     </nav>
@@ -82,7 +82,8 @@
                     <div class="font-bold h-6 mt-3 text-gray-600 text-xs leading-8 uppercase">Programme Name</div>
                     <div class="my-2 bg-white  flex  rounded">
 
-                        <select name="prog_nm"
+                        <select name="prog_nm[]"
+                                multiple
                                 id="prog_nm"
                                 class="w-full p-1 active:outline-none focus:outline-none rounded p-2.5 border border-gray-200 ">
                             @foreach($programs as $program)
@@ -109,21 +110,17 @@
                     </div>
                 </div>
 
+
                 <div class="w-full">
-                    <div class="font-bold h-6 mt-3 text-gray-600 text-xs leading-8 uppercase">Excursion Date</div>
+                    <div class="font-bold h-6 mt-3 text-gray-600 text-xs leading-8 uppercase">Date Booked</div>
                     <div class="my-2 bg-white p-1 flex  rounded">
-
-                        <select name="excur_dt"
-                                id="excur_dt"
-                                disabled
-                                class="w-full p-1 outline-none rounded p-2.5 border border-gray-200 ">
-                            @foreach($programs as $program)
-                                <option class="outline-none" value="{{$program->programme_id}}">{{$program->excursion_date}}</option>
-                            @endforeach
-                        </select>
-
+                        <input
+                            type="date"
+                            name="date_booked"
+                            class="w-full p-1 outline-none rounded p-2.5 border border-gray-200 ">
                     </div>
                 </div>
+
 
                 <div class="flex w-full mt-5 gap-3">
                     <div class= w-full">
@@ -193,4 +190,9 @@
         })
 
     });
+</script>
+
+<script type="text/javascript">
+    myVid=document.getElementById("iframeId");
+    myVid.muted=true;
 </script>

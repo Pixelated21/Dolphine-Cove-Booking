@@ -11,7 +11,7 @@ class Entities extends Model
 
 
     public $timestamps = false;
-    protected $primaryKey = "entity_id";
+    protected $primaryKey = "entity_type_id";
     protected $table = "entity_types";
 
     public function guest(){

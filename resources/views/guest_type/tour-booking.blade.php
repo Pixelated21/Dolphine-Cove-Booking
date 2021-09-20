@@ -13,17 +13,17 @@
 
 <body>
 
-<div class=" h-screen w-screen flex flex-col">
+<div class=" h-screen w-screen flex flex-col overflow-hidden">
 
-    <iframe  class="h-screen w-screen absolute filter brightness-50"  src="https://www.youtube.com/embed/Moc4F9sBRqg?autoplay=1&controls='0'" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; fullscreen" allowtransparency=""    allowfullscreen></iframe>
+    <iframe  class="h-screen w-screen absolute filter brightness-50"  src="https://www.youtube.com/embed/Moc4F9sBRqg?autoplay=1&controls='0&loop=1'" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; fullscreen" allowtransparency=""    allowfullscreen></iframe>
 
-    <nav class="flex justify-between px-10 p-2 bg-black shadow-2xl">
+    <nav class="flex relative justify-between px-10 p-2 bg-black shadow-2xl">
         <div class="text-white text-center relative text-2xl font-bold text-blue-300"><span class="text-blue-500">Dolphin</span> Cove</div>
         <a href="{{route("Booking")}}" class="text-white text-center hover:border border w-20 p-1 rounded transform duration-300 hover:scale-110 hover:border-blue-300 hover:bg-blue-300 hover:text-black text-xl">Back</a>
     </nav>
 
     <!-- component -->
-    <form action="{{url('/walk-in-booking-book ')}}" method="post" class="h-full w-full relative">
+    <form action="{{url('/tour-booking-book')}}" method="post" class="h-full w-full relative">
         @csrf
         <div class="flex flex-col  h-full w-full  md:flex-row items-center justify-center">
             <div class="md:w-1/2 text-white max-w-md flex flex-col justify-center">
@@ -55,7 +55,7 @@
                         <div class="font-bold h-6 mt-3 text-gray-600 text-xs leading-8 uppercase">Tour Company</div>
                         <div class="my-2 bg-white  flex  rounded">
 
-                            <select name="hotel"
+                            <select name="tour_comp"
                                     class="w-full p-1 active:outline-none focus:outline-none rounded p-2.5 border border-gray-200 ">
                                 @foreach($tour_companies as $tour_company)
                                     <option value="{{$tour_company->tour_company_id}}">{{$tour_company->company_name}}</option>
@@ -97,48 +97,62 @@
                         <div class="font-bold h-6 mt-3 text-gray-600 text-xs leading-8 uppercase">Programme Name</div>
                         <div class="my-2 bg-white  flex  rounded">
 
-                            <select name="prog_nm"
+                            <select name="prog_nm[]"
                                     id="prog_nm"
+                                    multiple="multiple"
                                     class="w-full p-1 active:outline-none focus:outline-none rounded p-2.5 border border-gray-200 ">
                                 @foreach($programs as $program)
                                     <option value="{{$program->programme_id}}">{{$program->programme_name}}</option>
                                 @endforeach
                             </select>
 
+
+
                         </div>
                     </div>
 
 
-                    <div class="w-full">
-                        <div class="font-bold h-6 mt-3 text-gray-600 text-xs leading-8 uppercase">Programme Cost</div>
-                        <div class="my-2 bg-white p-1 flex rounded">
+                    <div class="flex">
+                        <div class="w-full">
+                            <div class="font-bold h-6 mt-3 text-gray-600 text-xs leading-8 uppercase">Programme Cost</div>
+                            <div class="my-2 bg-white p-1 flex rounded">
 
-                            <select name="prog_cost"
-                                    id="prog_cost"
-                                    disabled
-                                    class="w-full p-1 active:outline-none focus:outline-none rounded p-2.5 border border-gray-200 ">
-                                @foreach($programs as $program)
-                                    <option value="{{$program->programme_cost}}">{{$program->programme_cost}}</option>
-                                @endforeach
-                            </select>
+                                <select name="prog_cost"
+                                        id="prog_cost"
+                                        class="w-full p-1 active:outline-none focus:outline-none rounded p-2.5 border border-gray-200 ">
+                                    @foreach($programs as $program)
+                                        <option value="{{$program->programme_cost}}">{{$program->programme_cost}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="w-full">
+                            <div class="font-bold h-6 mt-3 text-gray-600 text-xs leading-8 uppercase">Payment Type</div>
+                            <div class="my-2 bg-white p-1 flex rounded">
+
+                                <select name="payment_type"
+                                        class="w-full p-1 active:outline-none focus:outline-none rounded p-2.5 border border-gray-200 ">
+                                   @foreach($payment_types as $payment_type )
+                                        <option value="{{$payment_type->payment_type_id}}">{{$payment_type->payment_type}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
                         </div>
                     </div>
 
                     <div class="w-full">
-                        <div class="font-bold h-6 mt-3 text-gray-600 text-xs leading-8 uppercase">Excursion Date</div>
+                        <div class="font-bold h-6 mt-3 text-gray-600 text-xs leading-8 uppercase">Date Booked</div>
                         <div class="my-2 bg-white p-1 flex  rounded">
-
-                            <select name="excur_dt"
-                                    id="excur_dt"
-                                    disabled
-                                    class="w-full p-1 outline-none rounded p-2.5 border border-gray-200 ">
-                                @foreach($programs as $program)
-                                    <option class="outline-none" value="{{$program->programme_id}}">{{$program->excursion_date}}</option>
-                                @endforeach
-                            </select>
-
+                            <input
+                                type="date"
+                                name="date_booked"
+                                class="w-full p-1 outline-none rounded p-2.5 border border-gray-200 ">
                         </div>
                     </div>
+
+
+
 
                     <div class="flex w-full mt-5 gap-3">
                         <div class= w-full">
