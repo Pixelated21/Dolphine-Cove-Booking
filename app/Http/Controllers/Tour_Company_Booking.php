@@ -32,7 +32,7 @@ class Tour_Company_Booking extends Controller
 
     public function bookGuest(Request $request) {
 
-//        dd($request->all());
+       dd($request->all());
 
         $guest = new Guest();
         $guest->first_nm = $request->get('first_nm');
