@@ -81,7 +81,7 @@
                 <div class="w-full">
                     <div class="font-bold h-6 mt-3 text-gray-600 text-xs leading-8 uppercase">Programme Name</div>
                     <div class="my-2 bg-white  flex  rounded">
-
+                        <input hidden type="text" name="hidden_prog_nm" id="hidden_prog_nm" value=''>
                         <select name="prog_nm[]"
                                 multiple
                                 id="prog_nm"
@@ -168,6 +168,7 @@
         let nextBtn = $("#next-btn");
         let backBtn = $("#back-btn");
         let prg_nm = $("#prog_nm");
+        let hidden_prg_nm = document.getElementById('hidden_prog_nm');
         let prg_cost = $("#prog_cost");
         let excu_dt = $("#excur_dt");
         let total = $("#total");
@@ -190,6 +191,12 @@
             total[0].value = totalSum;
 
         });
+
+        prg_nm.on('click', function(){
+            hidden_prg_nm.value += prg_nm[0].value+','
+            // console.log()
+        })
+
 
 
 

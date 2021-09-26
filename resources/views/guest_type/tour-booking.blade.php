@@ -227,7 +227,8 @@
         });
         
         prg_nm.on('click', function(){
-            console.log(hidden_prg_nm.value += prg_nm[0].value+',')
+            hidden_prg_nm.value += prg_nm[0].value+','
+            // console.log()
         })
 
 

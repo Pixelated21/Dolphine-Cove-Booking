@@ -58,13 +58,18 @@ class Walk_In_Booking extends Controller
 
         foreach ($request->get("prog_nm") as $index => $value) {
 
-            $booking = new Booking();
-            $booking->programme_id = $value;
-            $booking->tour_company_id = $request->get("tour_comp");
-            $booking->payment_type_id = 2;
-            $booking->date_booked = $request->get("date_booked");
-            $guest->booking()->save($booking);
-
+            $getPayment_type_id = explode(',',$request->hidden_prog_nm);
+            // dd($getPayment_type_id);
+            foreach ($getPayment_type_id as $index => $value) {
+                if ($value != "") {
+                    $booking = new Booking();
+                    $booking->programme_id = $value;
+                    $booking->tour_company_id = $request->get("tour_comp");
+                    $booking->payment_type_id = 2;
+                    $booking->date_booked = $request->get("date_booked");
+                    $guest->booking()->save($booking);
+                }
+            }
         }
 
         return redirect('/booking');
