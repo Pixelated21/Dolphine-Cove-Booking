@@ -41,29 +41,22 @@ class Tour_Company_Booking extends Controller
         $guest->hotel_id = $request->get('hotel');
         $guest->push();
 
-        $progCost = [];
+        $totalCost = 0;
+        $getPayment_type_id = explode(',',$request->hidden_prog_nm);
+        foreach ($getPayment_type_id as $index => $value) {
+            if ($value != "") {
 
-        foreach ($request->get("prog_nm") as $index => $value) {
-            $progCost[] = Program::find($value)
-                ->where("programme_id", "=", $value)
-                ->first()->programme_cost;
+                $getProgram = Program::find($value);
+                $totalCost = $totalCost + $getProgram->programme_cost;
+            }
         }
-
-        $totalCost = array_sum($progCost);
-
-//        dd($totalCost);
-
-//        dd(Payment_Type::find($request->get("payment_type"))->get()[0]->payment_type);
-        if(Payment_Type::find($request->get("payment_type"))->get()[0]->payment_type === "credit" ) {
+        // dd(Payment_Type::where('payment_type_id','=',$request->payment_type)->first()->payment_type);
+        if(Payment_Type::where('payment_type_id','=',$request->payment_type)->first()->payment_type === "Credit" ) {
 
 
             $findCredit = Tour_Company::find(($request->get("tour_comp")))
                 ->where("tour_company_id","=",$request->get("tour_comp"))
                 ->first("credit_amt")->credit_amt;
-
-//            dd($findCredit);
-
-//            dd(Tour_Company::find($request->get("tour_comp"))->first()->credit_amt);
 
 
             $addCredit = Tour_Company::find($request->get("tour_comp"))
@@ -71,23 +64,20 @@ class Tour_Company_Booking extends Controller
 
 
         }
-        else if(Payment_Type::find($request->get("payment_type"))->get()[0]->payment_type === "2"){
-
+        else if(Payment_Type::where('payment_type_id','=',$request->payment_type)->first()->payment_type === "Cash"){
             $newActivity = new Payment_Activity();
-            $newActivity->amount_paid = $progCost[0]->programme_cost;
+            $newActivity->amount_paid = $totalCost;
 
             $newPayment = new Payment_info();
-            $newPayment->entity_type_id = 1;
-
+            $newPayment->entity_type_id = 2;
+            $guest->save();
             $guest->payment_info()->save($newPayment);
             $newPayment->payment_activity()->save($newActivity);
-
 
 
         }
         
         $getPayment_type_id = explode(',',$request->hidden_prog_nm);
-        // dd($getPayment_type_id);
         foreach ($getPayment_type_id as $index => $value) {
 
             if ($value != "") {

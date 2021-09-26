@@ -18,8 +18,6 @@ class Walk_In_Booking extends Controller
         $hotels = Hotel::all();
         $programs = Program::all();
 
-//        dd($hotel);
-
         return view("guest_type.walk-in")
             ->with(compact("hotels",$hotels))
             ->with(compact("programs",$programs));
@@ -27,26 +25,22 @@ class Walk_In_Booking extends Controller
 
     public function bookGuest(Request $request){
 
-//        dd($request->all());
-
-
         $guest = new Guest();
         $guest->first_nm = $request->get('first_nm');
         $guest->last_nm = $request->get('last_nm');
         $guest->guest_type_id = 1 ;
         $guest->hotel_id = $request->get('hotel');
 
+        $totalCost = 0;
+        $getPayment_type_id = explode(',',$request->hidden_prog_nm);
+        foreach ($getPayment_type_id as $index => $value) {
+            if ($value != "") {
 
-        $progCost = [];
-
-        foreach ($request->get("prog_nm") as $index => $value) {
-            $progCost[] = Program::find($value)
-                ->where("programme_id", "=", $value)
-                ->first()->programme_cost;
+                $getProgram = Program::find($value);
+                $totalCost = $totalCost + $getProgram->programme_cost;
+            }
         }
-
-        $totalCost = array_sum($progCost);
-
+        
         $newActivity = new Payment_Activity();
         $newActivity->amount_paid = $totalCost;
 
@@ -56,19 +50,18 @@ class Walk_In_Booking extends Controller
         $guest->payment_info()->save($newPayment);
         $newPayment->payment_activity()->save($newActivity);
 
-        foreach ($request->get("prog_nm") as $index => $value) {
+        $getPayment_type_id = explode(',',$request->hidden_prog_nm);
+        foreach ($getPayment_type_id as $index => $value) {
+            if ($value != "") {
 
-            $getPayment_type_id = explode(',',$request->hidden_prog_nm);
-            // dd($getPayment_type_id);
-            foreach ($getPayment_type_id as $index => $value) {
-                if ($value != "") {
-                    $booking = new Booking();
-                    $booking->programme_id = $value;
-                    $booking->tour_company_id = $request->get("tour_comp");
-                    $booking->payment_type_id = 2;
-                    $booking->date_booked = $request->get("date_booked");
-                    $guest->booking()->save($booking);
-                }
+                $getProgram = Program::find($value);
+                $totalCost = $totalCost + $getProgram->programme_cost;
+                $booking = new Booking();
+                $booking->programme_id = $value;
+                $booking->tour_company_id = $request->get("tour_comp");
+                $booking->payment_type_id = 2;
+                $booking->date_booked = $request->get("date_booked");
+                $guest->booking()->save($booking);
             }
         }
 
