@@ -32,7 +32,7 @@ class Tour_Company_Booking extends Controller
 
     public function bookGuest(Request $request) {
 
-       dd($request->all());
+    //    dd($request->all());
 
         $guest = new Guest();
         $guest->first_nm = $request->get('first_nm');
@@ -85,14 +85,19 @@ class Tour_Company_Booking extends Controller
 
 
         }
-        foreach ($request->get("prog_nm") as $index => $value) {
+        
+        $getPayment_type_id = explode(',',$request->hidden_prog_nm);
+        // dd($getPayment_type_id);
+        foreach ($getPayment_type_id as $index => $value) {
 
-            $booking = new Booking();
-            $booking->programme_id = $value;
-            $booking->tour_company_id = $request->get("tour_comp");
-            $booking->payment_type_id = $request->get("payment_type");
-            $booking->date_booked = $request->get("date_booked");
-            $guest->booking()->save($booking);
+            if ($value != "") {
+                $booking = new Booking();
+                $booking->programme_id = $value;
+                $booking->tour_company_id = $request->get("tour_comp");
+                $booking->payment_type_id = $request->get("payment_type");
+                $booking->date_booked = $request->get("date_booked");
+                $guest->booking()->save($booking);
+            }
 
         }
 
