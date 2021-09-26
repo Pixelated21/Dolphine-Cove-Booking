@@ -86,8 +86,14 @@
                                 multiple
                                 id="prog_nm"
                                 class="w-full p-1 active:outline-none focus:outline-none rounded p-2.5 border border-gray-200 ">
+                            @php
+                                $count = 0;
+                            @endphp
                             @foreach($programs as $program)
-                                <option value="{{$program->programme_id}}">{{$program->programme_name}}</option>
+                                <option value="{{$program->programme_cost}}" id="prog_nm_list{{$count}}" onclick="addPrgNm({{$count}},{{$program->programme_id}})">{{$program->programme_name}}</option>
+                                @php
+                                    ++$count;
+                                @endphp
                             @endforeach
                         </select>
 
@@ -156,67 +162,72 @@
 </body>
 </html>
 <script>
-    $(document).ready(function (){
+let guestInfo = $("#guestInfo");
+let programmeInfo = $("#programmeInfo");
+let nextBtn = $("#next-btn");
+let backBtn = $("#back-btn");
+let prg_nm = $("#prog_nm");
+let hidden_prg_nm = document.getElementById('hidden_prog_nm');
+let prg_cost = $("#prog_cost");
+let excu_dt = $("#excur_dt");
+let total = $("#total");
 
 
 
+let totalsumarr = [];
 
-
-
-        let guestInfo = $("#guestInfo");
-        let programmeInfo = $("#programmeInfo");
-        let nextBtn = $("#next-btn");
-        let backBtn = $("#back-btn");
-        let prg_nm = $("#prog_nm");
-        let hidden_prg_nm = document.getElementById('hidden_prog_nm');
-        let prg_cost = $("#prog_cost");
-        let excu_dt = $("#excur_dt");
-        let total = $("#total");
-
-
-
-        let totalsumarr = [];
-
-        prg_nm.on("change",function (){
-
-            prg_cost[0].options.selectedIndex = prg_nm[0].options.selectedIndex;
-
-            totalsumarr.push(Number(prg_cost[0].value));
-            let totalSum = 0;
-
-            for (let i = 0; i < totalsumarr.length; i++) {
-
-                totalSum += totalsumarr[i]
+        
+function addPrgNm(id, prg_id){
+    var checkPrgNm_Id = hidden_prg_nm.value.split(',')
+    if (checkPrgNm_Id.includes(prg_id.toString())) {
+        var newArray = []
+        checkPrgNm_Id.forEach(element => {
+            if (element != prg_id.toString()) {
+                newArray.push(element)
             }
-            total[0].value = totalSum;
-
         });
+        hidden_prg_nm.value = newArray.toString()
+        let prog_nm_cost = document.getElementById('prog_nm_list'+id+'').value;
+        total[0].value = parseInt(total[0].value) - parseInt(prog_nm_cost)
+        let prog_nm_list = document.getElementById('prog_nm_list'+id+'');
+        prog_nm_list.style.background = 'red'
 
-        prg_nm.on('click', function(){
-            hidden_prg_nm.value += prg_nm[0].value+','
-            // console.log()
-        })
+        console.log( 'yes')
+        console.log( hidden_prg_nm.value)
+        // console.log( prg_id)
+    } else {
+
+        let prog_nm_cost = document.getElementById('prog_nm_list'+id+'').value;
+        total[0].value = parseInt(total[0].value) + parseInt(prog_nm_cost)
+        let prog_nm_list = document.getElementById('prog_nm_list'+id+'');
+        hidden_prg_nm.value += prg_id+','
+        prog_nm_list.style.background = 'blue'
+
+        console.log( prog_nm_cost)
+        console.log( 'no')
+        console.log( hidden_prg_nm.value)
+    }
+}
 
 
 
 
-        programmeInfo.toggle();
+programmeInfo.toggle();
 
 
-        nextBtn.on("click",function (event){
-            event.preventDefault();
-            guestInfo.hide();
-            programmeInfo.toggle();
+nextBtn.on("click",function (event){
+    event.preventDefault();
+    guestInfo.hide();
+    programmeInfo.toggle();
 
-        });
+});
 
-        backBtn.on("click",function (event){
-            event.preventDefault();
-            guestInfo.toggle();
-            programmeInfo.toggle();
-        })
+backBtn.on("click",function (event){
+    event.preventDefault();
+    guestInfo.toggle();
+    programmeInfo.toggle();
+})
 
-    });
 </script>
 
 <script type="text/javascript">
