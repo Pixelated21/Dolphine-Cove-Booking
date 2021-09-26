@@ -19,7 +19,7 @@ class CreateBookingsTable extends Migration
             $table->foreignId("tour_company_id")->nullable()->constrained("tour_companies","tour_company_id")->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId("programme_id")->constrained("programs","programme_id")->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId("payment_type_id")->constrained("payment_types","payment_type_id")->cascadeOnDelete()->cascadeOnUpdate();
-            $table->date("date_booked");
+            $table->string("date_booked");
             $table->timestamps();
         });
     }
